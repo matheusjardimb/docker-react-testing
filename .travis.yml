@@ -1,0 +1,12 @@
+sudo: required
+
+language: generic 
+
+services:
+  - docker
+
+before_install:
+  - docker build -t matheusjardimb/docker-react-testing -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true matheusjardimb/docker-react-testing npm run test
